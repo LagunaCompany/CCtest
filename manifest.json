@@ -1,83 +1,78 @@
 {
-"commerceSuiteVersion": "1905.9",
+    "commerceSuiteVersion": "1905",
+    "useCloudExtensionPack": true,
     "extensions": [
+        "kiwi",
+        "tiger",
+        "yacceleratorstorefront",
+        "backoffice",
+        "cmsbackoffice",
+        "platformbackoffice",
         "modeltacceleratorservices",
         "electronicsstore",
-        "customerticketingaddon",
-        "yacceleratorstorefront",
-        "backoffice"
-    ], 
-    "useConfig": {
-        "properties": [
-            {
-                "location": "config/local.properties"
-            },
-            {
-                "location": "config/local-dev.properties",
-                "persona": "development"
-            },
-            {
-                "location": "config/local-prod.properties",
-                "persona": "production"
-            },
-            {
-                "location": "config/local-backoffice-prod.properties",
-                "persona": "production",
-                "aspect": "backoffice"
-            },
-            {
-                "location": "config/local-backoffice.properties",
-                "aspect": "backoffice"
-            }
-        ],
-        "extensions": {
-            "location": "config/localextensions.xml",
-            "exclude": [
-                "custom_2_extension_without_dir",
-                "custom_1_extension_with_dir"
-            ]
-        },
-        "solr": {
-            "location": "[Solr custom folder]"
-        },
-        "languages" : {
-            "location": "_LANGUAGES_"
+        "yacceleratorfulfilmentprocess",
+        "albinoaddon",
+        "azurecloudhotfolder",
+        "ycommercewebservices",
+        "cmswebservices",
+        "permissionswebservices"
+    ],
+
+    "storefrontAddons" : [
+        {
+            "addon": "albinoaddon",
+            "storefront": "yacceleratorstorefront",
+            "template": "yacceleratorstorefront"
         }
-},
+        {
+         "addon": "smarteditaddon",
+         "storefront": "<yourcustomstorefront>",
+         "template": "yacceleratorstorefront"
+         },
+
+        {
+         "addon": "personalizationaddon",
+         "storefront": "<yourcustomstorefront>",
+         "template": "yacceleratorstorefront"
+         },
+    ],
     "properties": [
         {
+            "key": "lang.packs",
+            "value": "de,en,es,es_CO,fr,it,ja,ko,pt,ru,zh,zh_TW,hi,id,cs,cy"
+        },
+        {
             "key": "test.property.1",
-            "value": "test.property.1.value",
+            "value": "test-property-1-value-prod",
             "persona": "production"
         },
         {
-            "key": "test.property.2",
-            "value": "test.property.2.value",
+            "key": "test.property.1",
+            "value": "test-property-1-value-dev",
             "persona": "development"
         },
         {
-            "key": "test.property.2",
-            "value": "test.property.2.value.in.prod.only",
-            "persona": "production"
-        }
-    ],
-    "storefrontAddons": [
-        {
-            "addon": "customerticketingaddon",
-            "storefront": "mycustomstorefront",
-            "template": "yacceleratorstorefront"
+            "key": "test.property.1",
+            "value": "test-property-1-value"
         },
         {
-            "addon": "smarteditaddon",
-            "storefront": "mycustomstorefront",
-            "template": "yacceleratorstorefront"
+            "key": "test.property.2",
+            "value": "test-property-2-value"
+        },
+        {
+            "key": "auditing.enabled",
+            "value": "false"
+        },
+        {
+            "key": "default.session.timeout",
+            "value": "360"
         }
     ],
-     "aspects": [
+    "aspects": [
         {
             "name": "backoffice",
             "properties": [
-				{
+                {
                     "key": "test.property.1",
                     "value": "test.property-1-value-prod-backoffice",
                     "persona": "production"
@@ -98,9 +93,105 @@
                 },
                 {
                     "name": "backoffice",
-                    "contextPath": ""
+                    "contextPath": "/backoffice"
                 }
             ]
+        },
+        {
+            "name": "api",
+            "properties": [
+                    {
+                        "key":"xss.filter.header.X-Frame-Options",
+                        "value":""
+                    }
+                    {
+                     "key":"storefrontContextRoot",
+                     "value":"<yourcustomstorefront>"
+                     },
+            ],
+            "webapps": [
+                {
+                    "name": "ycommercewebservices",
+                    "contextPath": "/rest"
+                },
+                {
+                    "name": "oauth2",
+                    "contextPath": "/authorizationserver"
+                },
+                {
+                    "name": "cmswebservices",
+                    "contextPath": "/cmswebservices"
+                },
+                {
+                    "name": "permissionswebservices",
+                    "contextPath": "/permissionswebservices"
+                }
+                {
+                 "name": "<yourcustomstorefront>",
+                 "contextPath": "/<yourcustomstorefront>"
+                 },
+                {
+                 "name": "smartedit",
+                 "contextPath": "/smartedit"
+                 },
+
+                 {
+                 "name": "cmssmartedit",
+                 "contextPath": "/cmssmartedit"
+                 },
+
+                 {
+                 "name": "smarteditwebservices",
+                 "contextPath": "/smarteditwebservices"
+                 },
+
+                 {
+                 "name": "cmssmarteditwebservices",
+                 "contextPath": "/cmssmarteditwebservices"
+                 },
+                {
+                 "name": "oauth2",
+                 "contextPath": "/authorizationserver"
+                 },
+                 {
+                 "name": "cmswebservices",
+                 "contextPath": "/cmswebservices"
+                 },
+
+                 {
+                 "name": "permissionswebservices",
+                 "contextPath": "/permissionswebservices"
+                 },
+
+                 {
+                 "name": "previewwebservices",
+                 "contextPath": "/previewwebservices"
+                 },
+                {
+                 "name": "mediaweb",
+                 "contextPath": "/medias"
+                 },
+
+                 {
+                  "name": "personalizationsmartedit",
+                  "contextPath": "/personalizationsmartedit"
+                  },
+
+                  {
+                  "name": "personalizationpromotionssmartedit",
+                  "contextPath": "/personalizationpromotionssmartedit"
+                  },
+
+                  {
+                  "name": "personalizationwebservices",
+                  "contextPath": "/personalizationwebservices"
+                  },
+
+                  {
+                  "name": "personalizationsearchsmartedit",
+                  "contextPath": "/personalizationsearchsmartedit"
+                  },
+                  ]
         },
         {
             "name": "accstorefront",
@@ -132,7 +223,7 @@
                     "contextPath": "/medias"
                 },
                 {
-                    "name": "mycustomstorefront",
+                    "name": "yacceleratorstorefront",
                     "contextPath": ""
                 },
                 {
@@ -143,7 +234,12 @@
         },
         {
             "name": "backgroundProcessing",
-            "properties": [],
+            "properties": [
+                {
+                    "key": "cluster.node.groups",
+                    "value": "integration,yHotfolderCandidate"
+                }
+            ],
             "webapps": [
                 {
                     "name": "hac",
@@ -153,42 +249,21 @@
                     "name": "mediaweb",
                     "contextPath": "/medias"
                 }
-        {
-            "name": "api",
-            "properties": [
-                    {
-                        "key":"xss.filter.header.X-Frame-Options",
-                        "value":""
-                    }
-            ],
-            "webapps": [
-                {
-                    "name": "ycommercewebservices",
-                    "contextPath": "/rest"
-                },
-                {
-                    "name": "oauth2",
-                    "contextPath": "/authorizationserver"
-                },
-                {
-                    "name": "cmswebservices",
-                    "contextPath": "/cmswebservices"
-                },
-                {
-                    "name": "permissionswebservices",
-                    "contextPath": "/permissionswebservices"
-                }
             ]
         }
     ],
     "tests": {
-        "extensions": ["customerticketingaddon",
-        "yacceleratorstorefront"],
-        "annotations": ["UnitTests", "IntegrationTests"],
-        "packages": ["de.hybris.infra.*"]
-    },
-    "webTests": {
-        "extensions": ["yacceleratorstorefront"],
-        "excludedPackages": ["de.hybris.platform.*"]
+        "extensions": [
+            "kiwi",
+            "tiger",
+            "albinoaddon"
+        ],
+        "annotations": [
+            "UnitTests",
+            "IntegrationTests"
+        ],
+        "packages": [
+            "com.acme.*"
+        ]
     }
 }
